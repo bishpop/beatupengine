@@ -4,7 +4,14 @@
 
 With zero input lag, perfect frame timings, and a fully featured modern UI, it offers both players and chart mappers the ultimate rhythm experience.
 
-![BeatUp Engine UI Placeholder](https://via.placeholder.com/800x450.png?text=BeatUp+Engine+Screenshot)
+### Main Menu
+![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/MainMenu.png?raw=true)
+
+## Chart Editor
+![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/BuEditor.png?raw=true)
+
+## Patcher
+![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/BuPatcher.png?raw=true)
 
 ## ✨ Features
 
