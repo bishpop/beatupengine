@@ -69,4 +69,4 @@ Featuring low latency, precise frame timings, and a fully featured user interfac
 
 ## 🙎🏼‍♂️ Author
 
-(C) Sanya. All rights reserved.
+Sanya
