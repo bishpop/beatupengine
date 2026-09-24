@@ -8,7 +8,7 @@ Featuring low latency, precise frame timings, and a fully featured user interfac
 ![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/MainMenu.png?raw=true)
 
 ## ⭐ Chart Editor
-![BeatUp Engine UI Main Menu](<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/771d04e5-217b-4d98-bb41-f6eb884b69eb" />)
+![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/BuEditor.png?raw=true)
 
 ## ⭐ Patcher
 ![BeatUp Engine UI Main Menu](https://github.com/bishpop/beatupengine/blob/main/BuPatcher.png?raw=true)
