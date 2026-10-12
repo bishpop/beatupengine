@@ -4,7 +4,9 @@
 
 The project focuses on responsive input, consistent timing, low-overhead rendering and a workflow that combines **playing, testing and chart creation** in one application.
 
-> **Current release:** `v0.6.1`
+> **Current release:** `v1.0.1`
+>
+> Everything runs from a single, self-contained `.exe` — all graphics, fonts and sounds are built in.
 >
 > See the complete release history on [GitHub Releases](https://github.com/bishpop/beatupengine/releases).
 
@@ -38,6 +40,16 @@ The project focuses on responsive input, consistent timing, low-overhead renderi
 - **Challenger Mode** for stricter performance-based runs.
 - Multiple Patcher Chance modes for alternate gameplay patterns.
 
+### Play your chart
+
+A dedicated mode for playing your own `.bu` projects straight from the main menu, with no Patcher required.
+
+- Reads every `.bu` from the `charts/` folder next to the executable (sub-folders per song are fine).
+- Type-to-search, sort by name, level or BPM (`Tab`), and a short music preview when you stay on a song.
+- Detail card with BPM, note count, length, level and a difficulty bar.
+- Per-level accent colors, from calm blue at level 1 up to platinum at level 10.
+- Since the music is embedded in the `.bu`, a single file is all you need to play or share a chart.
+
 ### Chart Editor
 
 The integrated editor is built for creating, testing and refining charts without switching applications.
@@ -49,47 +61,65 @@ The integrated editor is built for creating, testing and refining charts without
 - Waveform visualization behind the chart.
 - Arrow Vortex-style waveform core/inner-line visualization.
 - Minimap with song-position marker.
-- Colored snap grid.
+- Colored snap grid, with `Alt + ← / →` to cycle the snap (1/4 · 1/8 · 1/16).
 - Beat and MADI navigation.
+- Optional **Numpad Charting** for placing notes with the numeric keypad.
+- **Bookmarks** (`Ctrl + B`) with your own text, shown as clickable labels in the chart and saved inside `.bu` projects — ideal as notes when charting together.
 - Rectangle selection using **Ctrl + Left Mouse Button**.
 - Edge scrolling while selecting.
 - Copy/paste with destination replacement for true 1:1 section editing.
 - Undo/redo history with action feedback.
 - Live duplicate-note detection.
-- Direct HEX color customization.
+- Theme Editor with live preview (replaces the old raw HEX color panel).
 - Persistent editor, audio and visualization settings.
-- Save and restore editor playback position through `.bu` projects.
+- Self-contained `.bu` projects: the chart **and** the music are stored together, and the editor playback position is restored on reopen.
 - Direct chart import/export for supported formats.
 - Integration with **Silencer** for timing and audio preparation.
 
-### Patcher
+### Patcher (optional)
 
-The Patcher manages additional game content and helps keep an installation synchronized with the required files.
+The Patcher manages additional game content and helps keep an installation synchronized with the required files. It is **off by default** and can be enabled under **Options › General › Patcher**.
 
 - Patch downloading and installation workflow.
-- Required-file validation.
-- Detection of missing music, charts and scripts.
-- `master.bue` based patch validation.
-- Automatic recovery guidance for incomplete installations.
+- Required-file validation and detection of missing music, charts and scripts.
+- `master.bue` based patch validation with in-app recovery guidance.
 - GitHub release/update checking.
-- Song and level information in the Patcher interface.
-- Patcher-specific Chance modes.
-- Per-song timing offsets used by the Patcher.
+- Song and level information, personal rankings and an HTML ranking export.
+- Patcher-specific Chance modes and per-song timing offsets.
 - **Download New Patches** workflow.
 - **Hard Restart** support via `Ctrl + Shift + R`.
+- Redesigned to match the clean *Play your chart* look (search, sorting, per-level accents, best-rank display).
+
+### Options
+
+All settings live in one window, opened from the main menu, the Editor or the Patcher (`Ctrl + S`), and grouped by what they do:
+
+| Section | Contents |
+| --- | --- |
+| **Display** | FPS limit, resolution, dim-game overlay. |
+| **Gameplay** | Enter Lock, Auto Enter-Chance, Skip Intro (Off / 8 Beats / 1 MADI), Chance mode, Challenger Mode. |
+| **Audio** | Music, sound effects, and per-event gameplay sounds (file + volume). |
+| **General** | Your charter name, theme, optional Patcher, Custom assets and Backgrounds. |
 
 ### Themes & UI
 
-- Built-in and user-created themes.
+- Built-in and user-created themes, including the new **BeatUp Night** theme.
 - Theme Editor with live preview.
 - Base color controls for background, surface, accent, text, muted text and borders.
 - Additional customization for waveform, minimap and Receptor Bar elements.
 - Persistent themes through `theme.ini`.
-- Custom main menu background support via `menu_background.png`.
-- Categorized Options for graphics, gameplay, editor and Patcher settings.
+- A native Windows window frame with rounded corners and an accent border that follows the current theme (removed in F11 fullscreen).
+- Redesigned, keyboard-friendly main menu, onboarding and a single consistent dialog style.
+- Categorized Options for display, gameplay, audio and general settings.
 - First-launch onboarding with configurable Charter Name.
 - Charter Name attribution for `.slk` exports.
 - Animated menu and interface elements.
+
+### Make it yours
+
+- **Single-file build:** all graphics, fonts and sounds are embedded in `BeatUpEngine.exe` — there is no `assets/` folder to ship.
+- **Custom assets:** enable it in Options to generate the folder structure (each with a README listing the built-in files, formats and sizes). Drop in files with the same name to override the built-in design; anything you leave out keeps the embedded version.
+- **Backgrounds:** add your own game backgrounds directly from Options or the Editor. They are saved in your data folder and are ready to use immediately.
 
 ---
 
@@ -169,13 +199,14 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 
 | File | Purpose |
 | --- | --- |
-| `.bu` | Full BeatUp Engine editor/project/session format. Stores chart-related project state including playback position. |
+| `.bu` | Full BeatUp Engine project format. Stores the chart, bookmarks and editor playback position, and **embeds the song audio** so the project is fully self-contained. Older audio-less `.bu` files still open. |
 | `.slk` | Chart export format. Export attribution can include the configured Charter Name. |
 | `.ssc` | Chart export format with BPM and music filename information. |
 | `config.ini` | Persistent application, editor, audio and gameplay settings. |
 | `theme.ini` | Saved user themes and visual customization. |
-| `menu_background.png` | Optional custom main menu background. |
-| `patcher/` | Patcher content expected alongside the BeatUp Engine executable. |
+| `charts/` | Folder next to the executable holding the `.bu` files for **Play your chart** (sub-folders per song are fine). |
+| `assets/` | Optional. Only needed when **Custom assets** is enabled to override the built-in graphics, fonts or sounds. |
+| `patcher/` | Optional Patcher content, expected alongside the executable when the Patcher is enabled. |
 
 ---
 
@@ -185,8 +216,8 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 
 | Key | Action |
 | --- | --- |
-| `Esc` | Back / menu / exit. In-game, hold for 3 seconds to abort. |
-| `Ctrl + S` | Open Sound Settings. |
+| `Esc` | Back / menu. In-game, opens the pause menu. |
+| `Ctrl + S` | Open Options. |
 | `Ctrl + Shift + R` | Hard Restart. |
 | `F11` | Toggle borderless fullscreen. |
 
@@ -195,6 +226,8 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 | Key | Action |
 | --- | --- |
 | `↑ / ↓` | Navigate through the song list. |
+| `Type` | Search the song list. |
+| `Tab` | Change sorting (name / level / BPM). |
 | `Enter / Numpad Enter` | Start the selected song. |
 
 ### Editor & Playback
@@ -208,6 +241,7 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 | `F5 / Spacebar` | Play / pause audio. |
 | `F6` | Toggle Auto-Play. |
 | `F7` | Stop playback and reset. |
+| `Alt + ← / →` | Cycle the snap (1/4 · 1/8 · 1/16). |
 | `Ctrl + Left Arrow` | Decrease playback speed by 5%. |
 | `Ctrl + Right Arrow` | Increase playback speed by 5%. |
 | `Ctrl + 0` | Reset playback speed to 100%. |
@@ -228,8 +262,9 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 | `Ctrl + Y` | Redo. |
 | `Ctrl + W` | Mirror selection horizontally. |
 | `Ctrl + E` | Mirror selection vertically. |
+| `Ctrl + B` | Add a bookmark with text. |
 | `Delete` | Delete selected notes. |
-| `Tab` | Toggle tab selection. |
+| `Numpad 7 4 1 9 6 3` | Place lane notes (when Numpad Charting is enabled). |
 | `S` | Space action. |
 | `F` | Finish Move action. |
 
@@ -237,7 +272,7 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 
 | Key | Action |
 | --- | --- |
-| `Ctrl + Shift + S` | Save `.bu` project. |
+| `Ctrl + Shift + S` | Save `.bu` project (audio embedded). |
 | `Ctrl + Shift + E` | Direct `.slk` export. |
 | `Ctrl + Shift + V` | Direct `.ssc` export. |
 | `Ctrl + Alt + A` | Import audio. |
@@ -253,16 +288,16 @@ Pasting a copied section **replaces the notes in the destination region**, allow
 
 1. Download the latest release from the [GitHub Releases](https://github.com/bishpop/beatupengine/releases) page.
 2. Extract the release to a directory of your choice.
-3. Keep the `assets/` folder beside the BeatUp Engine executable.
-4. Keep the `patcher/` folder beside the executable when using Patcher content.
-5. Keep existing `config.ini`, `theme.ini` and project files when upgrading.
-6. Start BeatUp Engine.
+3. Run `BeatUpEngine.exe` — everything is built in, so there is no `assets/` folder to keep beside it.
+4. Put your `.bu` files into the `charts/` folder next to the executable to use **Play your chart**.
+5. Keep the `patcher/` folder beside the executable only if you use Patcher content.
+6. Keep existing `config.ini`, `theme.ini` and project files when upgrading.
 
-BeatUp Engine can also associate `.bu` project files with the application on Windows. Opening a `.bu` file restores the project, chart and saved playback position.
+BeatUp Engine can also associate `.bu` project files with the application on Windows. Opening a `.bu` file restores the project, chart, audio and saved playback position.
 
 ### Updating
 
-For updates, replace the application executable while keeping your existing project and configuration files. Patch updates are handled through the Patcher's patch-management workflow.
+For updates, replace the application executable while keeping your existing project and configuration files. Patch updates (when the Patcher is enabled) are handled through the Patcher's patch-management workflow.
 
 The application can also check the GitHub Releases page for newer versions and present an in-app update notice.
 
@@ -278,10 +313,11 @@ The application can also check the GitHub Releases page for newer versions and p
 
 #### Build Tools
 
-- **CMake** 3.15 or newer
+- **CMake** 3.16 or newer
 - **Visual Studio** with the C++ Desktop Development workload / MSVC
 - **SDL2**
 - **SDL2_image**
+- **SDL2_ttf**
 - **Dear ImGui**
 - **miniaudio**
 
@@ -294,6 +330,8 @@ cmake -S . -B build
 cmake --build build --config Release
 ```
 
+During configuration, the files in `assets/` are embedded into the executable automatically (`cmake/EmbedAssets.cmake`). New or changed asset files are picked up on the next build. To also copy the `assets/` folder next to the executable (for example as a template for custom designs), configure with `-DBUE_SHIP_ASSET_FILES=ON`.
+
 The resulting binaries are generated by the selected CMake generator. For Visual Studio/MSBuild configurations, use the `Release` configuration as shown above.
 
 ---
@@ -302,6 +340,8 @@ The resulting binaries are generated by the selected CMake generator. For Visual
 
 | Version | Date | Main Changes |
 | --- | --- | --- |
+| **v1.0.1** | 2026-10 | Single-file `.exe` (all assets embedded), **Play your chart**, music embedded in `.bu`, one unified Options window, optional Patcher, **BeatUp Night** theme and window frame, custom assets & backgrounds, timing/sync and audio fixes. |
+| **v1.0** | 2026 | New scoring & ranking system, redesigned result card, compact score bar, snap hotkeys, Numpad Charting, bookmarks in projects. |
 | **v0.6.1** | 2026-09-24 | Chart Editor Receptor Bar, Receptor Bar theming, per-song Patcher timing offsets. |
 | **v0.6** | 2026-09-21 | Main UI redesign, onboarding, categorized Options, Theme Editor, Split View improvements, editor navigation, playback UI and judgment fixes. |
 | **v0.5.1** | 2026-09-18 | Onboarding, menu/Patcher redesign, Perfect positioning fixes, judgment-window refinement and additional animations. |
@@ -328,6 +368,8 @@ BeatUp Engine has evolved through several major development phases:
 5. **Competitive & Display Features (`v0.5`)** — Challenger Mode, high-resolution support, DPI handling and save protection.
 6. **UI & Editor Redesign (`v0.5.1–v0.6`)** — Onboarding, redesigned menus, Theme Editor, categorized Options and improved Split View.
 7. **Editor/Game Parity (`v0.6.1`)** — Receptor Bar support in the editor and per-song Patcher timing.
+8. **Scoring & Polish (`v1.0`)** — New ranks and result card, compact score bar, snap hotkeys, Numpad Charting and project bookmarks.
+9. **Self-Contained Rework (`v1.0.1`)** — Single-file executable, Play your chart, music embedded in `.bu`, one unified Options window, optional Patcher, new theme and window frame, custom assets & backgrounds.
 
 ---
 
@@ -340,7 +382,7 @@ BeatUp Engine is built around a few core goals:
 - **Mapper-friendly editing** — chart creation should be fast, visual and reversible.
 - **Practical tooling** — playing, testing, editing and patch management should work together.
 - **Customizable presentation** — users can adapt the interface and editor to their workflow.
-- **Portable project data** — charts and editor state should be easy to save, move and reopen.
+- **Portable project data** — charts and editor state should be easy to save, move and reopen, now in a single file.
 
 ---
 
@@ -352,5 +394,6 @@ BeatUp Engine is built around a few core goals:
 
 ## Links
 
+- [Website](https://web.beatupengine.workers.dev/bue)
 - [GitHub Repository](https://github.com/bishpop/beatupengine)
 - [GitHub Releases](https://github.com/bishpop/beatupengine/releases)
