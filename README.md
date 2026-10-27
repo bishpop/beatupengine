@@ -4,7 +4,7 @@
 
 The project focuses on responsive input, consistent timing, low-overhead rendering and a workflow that combines **playing, testing and chart creation** in one application.
 
-> **Current release:** `v1.1`
+> **Current release:** `v1.2`
 >
 > Everything runs from a single, self-contained `.exe` — all graphics, fonts and sounds are built in.
 >
