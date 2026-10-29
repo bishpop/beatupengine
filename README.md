@@ -10,7 +10,7 @@ The project focuses on responsive input, consistent timing, low-overhead renderi
 >
 > See the complete release history on [GitHub Releases](https://github.com/bishpop/beatupengine/releases).
 >
-> **Download here:** [BeatUp Engine v1.2](https://web.beatupengine.workers.dev/bue)
+> **Get it here:** [BeatUp Engine v1.2](https://web.beatupengine.workers.dev/bue)
 
 ## Screenshots
 
