@@ -9,6 +9,8 @@ The project focuses on responsive input, consistent timing, low-overhead renderi
 > Everything runs from a single, self-contained `.exe` — all graphics, fonts and sounds are built in.
 >
 > See the complete release history on [GitHub Releases](https://github.com/bishpop/beatupengine/releases).
+>
+> **Download here:** [BeatUp Engine v1.2](https://web.beatupengine.workers.dev/bue)
 
 ## Screenshots
 
