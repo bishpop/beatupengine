@@ -1,8 +1,8 @@
 # 🎮 BeatUp Engine
 
-**BeatUp Engine** is a lightweight 2D rhythm game engine and chart editor written in modern C++. It is designed as a standalone simulator and development environment for classic **6-key + Spacebar rhythm gameplay**, with additional support for **Finish Move** charts, chart editing, patch management and customizable themes.
+**BeatUp Engine** is a lightweight 2D chart editor written in modern C++. It is designed as a standalone simulator and development environment for classic **6-key + Spacebar rhythm editing**, with additional support for **Finish Move** charts, chart editing and customizable themes.
 
-The project focuses on responsive input, consistent timing, low-overhead rendering and a workflow that combines **playing, testing and chart creation** in one application.
+The project focuses on responsive input, consistent timing, low-overhead rendering and a workflow that combines **testing and chart creation** in one application.
 
 > **Current release:** `v1.2`
 >
@@ -81,7 +81,7 @@ The integrated editor is built for creating, testing and refining charts without
 - Direct chart import/export for supported formats.
 - Integration with **Silencer** for timing and audio preparation.
 
-### Patcher (optional)
+### Patcher (optional) !REMOVED
 
 The Patcher manages additional game content and helps keep an installation synchronized with the required files. It is **off by default** and can be enabled under **Options › General › Patcher**.
 
